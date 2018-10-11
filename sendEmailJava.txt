@@ -1,0 +1,64 @@
+01
+import java.util.*;
+02
+import javax.mail.*;
+03
+import javax.mail.internet.*;
+04
+ 
+05
+public class SendEmail
+06
+{
+07
+    public static void main(String [] args)
+08
+    {   
+09
+        String to = "recipient@gmail.com";
+10
+        String from = "sender@gmail.com";
+11
+        String host = "localhost";
+12
+ 
+13
+        Properties properties = System.getProperties();
+14
+        properties.setProperty("mail.smtp.host", host);
+15
+        Session session = Session.getDefaultInstance(properties);
+16
+ 
+17
+        try{
+18
+            MimeMessage message = new MimeMessage(session);
+19
+            message.setFrom(new InternetAddress(from));
+20
+ 
+21
+            message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));
+22
+ 
+23
+            message.setSubject("My Email Subject");
+24
+            message.setText("My Message Body");
+25
+            Transport.send(message);
+26
+            System.out.println("Sent successfully!");
+27
+        }
+28
+        catch (MessagingException ex) {
+29
+            ex.printStackTrace();
+30
+        }
+31
+    }
+32
+}
