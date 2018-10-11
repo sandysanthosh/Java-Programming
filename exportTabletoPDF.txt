@@ -1,0 +1,72 @@
+01
+import java.io.FileOutputStream;
+02
+import com.itextpdf.text.Document;
+03
+import com.itextpdf.text.Paragraph;
+04
+import com.itextpdf.text.pdf.PdfPCell;
+05
+import com.itextpdf.text.pdf.PdfPTable;
+06
+import com.itextpdf.text.pdf.PdfWriter;
+07
+ 
+08
+public class DrawPdf {
+09
+ 
+10
+      public static void main(String[] args) throws Exception {
+11
+        Document document = new Document();
+12
+        PdfWriter.getInstance(document, new FileOutputStream("Employee.pdf"));
+13
+        document.open();
+14
+         
+15
+        Paragraph para = new Paragraph("Employee Table");
+16
+        para.setSpacingAfter(20);
+17
+        document.add(para);
+18
+         
+19
+        PdfPTable table = new PdfPTable(3);
+20
+        PdfPCell cell = new PdfPCell(new Paragraph("First Name"));
+21
+ 
+22
+        table.addCell(cell);
+23
+        table.addCell("Last Name");
+24
+        table.addCell("Gender");
+25
+        table.addCell("Ram");
+26
+        table.addCell("Kumar");
+27
+        table.addCell("Male");
+28
+        table.addCell("Lakshmi");
+29
+        table.addCell("Devi");
+30
+        table.addCell("Female");
+31
+ 
+32
+        document.add(table);
+33
+         
+34
+        document.close();
+35
+      }
+36
+    }
